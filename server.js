@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 const mongodb = require("./db/connect");
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
+const cors = require('cors');
 
 app
   .use(bodyParser.json())
@@ -18,7 +19,7 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS');
     next();
   })
-  .use("/", require("./routes"))
+  .use(cors()).use('/', require('./routes'))
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));;
 
 mongodb.initDb((err) => {
