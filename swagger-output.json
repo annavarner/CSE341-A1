@@ -7,9 +7,6 @@
   },
   "host": "cse341-2ph6.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
   "paths": {
     "/": {
       "get": {
